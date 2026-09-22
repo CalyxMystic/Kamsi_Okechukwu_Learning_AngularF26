@@ -1,2 +1,26 @@
-<h1>My first name is {{firstName}}</h1>
-<h1>My last name is {{lastName}}</h1>
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<h1>This is assignment 2</h1>
+  @for (i of appList; track i.id){
+    <div class ="Cool">
+      <p><strong>Name:</strong>{{i.name}}</p>
+      <p>Friends:{{i.hasFriends}}</p>
+      <p>Location:{{i.hasLocation}}</p>
+      <p>Union:{{i.union}}</p>
+    </div>
+    @if (i.hasFriends){
+      <p class="Cool"> This is optional {{i.hasFriends}}</p>
+    }
+  } @empty {
+    <p>This is nothing</p>
+  }
+</body>
+</html>
+
