@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {GameListItem} from '../game-list-item/game-list-item';
 import {Game} from '../shared/models/game';
+import {GameEvents} from '../shared/models/game-events';
 
 @Component({
   imports: [
@@ -16,5 +17,9 @@ export class GameList {
     {id:2, name:"Sword Of The Sea", genre: "Action-Adventure",copiesSold:"Over 36,00",isOwned:false},
     {id:3, name:"Persona 3", genre:"Action-Adventure",copiesSold:"Over 3 million",isOwned:false},
     {id:4, name:"Dead Cells", genre:"2D Metriodvania",copiesSold:"Over 10 million",isOwned:true}
-  ]
+  ];
+  onOpenGame(event: GameEvents): void {
+    console.log(event.id, event.action);
+  }
+
 }

@@ -1,5 +1,6 @@
-import { Component,input } from '@angular/core';
+import { Component,input,output } from '@angular/core';
 import {Game} from '../shared/models/game';
+import {GameEvents} from '../shared/models/game-events';
 
 @Component({
   imports: [],
@@ -9,4 +10,9 @@ import {Game} from '../shared/models/game';
 })
 export class GameListItem {
   game=input.required<Game>();
+  openGame=output<GameEvents>();
+  handleClick():void{
+    this.openGame.emit({id:this.game().id,
+      action:'openGame'});
+  }
 }
