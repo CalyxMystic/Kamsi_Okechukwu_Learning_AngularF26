@@ -1,1 +1,8 @@
-<p>game-list works!</p>
+<div class="Cool">
+  <h2>Video Games</h2>
+  @for (game of gameCard; track game.id){
+    <app-game-list-item [game]="game"></app-game-list-item>
+  } @empty {
+    <p>No games available</p>
+  }
+</div>

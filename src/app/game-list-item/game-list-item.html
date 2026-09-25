@@ -1,1 +1,16 @@
-<p>game-list-item works!</p>
+<div class="Cool">
+  <h1>{{game().name}}</h1>
+  <h3>{{game().genre}}</h3>
+  <h3>{{game().copiesSold}}</h3>
+  @switch (game().genre){
+    @case ('Role-playing'){<span class="Cool-item">Role-Playing</span>}
+    @case ('Action-Adventure'){<span class="Cool-item">Action-Adventure</span>}
+    @case ('2D Metroidvania'){<span class="Cool-item">2D Metroidvania</span>}
+    @default {<span class="status--missing">Other</span>}
+  }
+  @if (game().isOwned) {
+    <p class="status">Ownership Available</p>
+  } @else {
+    <p>Ownership Unavailable</p>
+  }
+</div>
