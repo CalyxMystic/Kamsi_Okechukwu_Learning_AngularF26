@@ -1,0 +1,57 @@
+$bg-main: #0f172a;
+$bg-item:#1e293b;
+$text-light: #f8fafc;
+$text-dim: #94a3b8;
+$accent-purple: #8b5cf6;
+$accent-green: #10b981;
+$radius: 16px;
+.Cool {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 24px;
+  background-color: $bg-main;
+  font-family: system-ui, -apple-system, sans-serif;
+  &-item {
+    background-color: $bg-item;
+    border-radius: $radius;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+  &:hover {
+    transform: scale(1.02);
+    border-color: rgba($accent-purple, 0.4);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  h3 {
+    color: $text-light;
+    font-size: 1.3rem;
+    margin: 0 0 12px 0;
+  }
+  p {
+    color: $text-dim;
+    font-size: 0.95rem;
+    margin: 6px 0;
+  }
+  span {
+    color: lighten($text-dim, 20%);
+    font-weight: 500;
+  }
+}
+.status{
+  margin-top: auto;
+  padding-top:16px ;
+  font-size:0.85rem ;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  &--owned{
+    color: $accent-green;
+  }
+  &--missing{
+  color: rgba($text-dim,0.6);
+  }
+}
