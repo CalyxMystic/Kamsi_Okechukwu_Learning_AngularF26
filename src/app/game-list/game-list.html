@@ -5,4 +5,7 @@
   } @empty {
     <p>No games available</p>
   }
+  @for (game of gameList(); track game.id){
+    <app-game-list [game]="game"/>
+  }
 </div>
