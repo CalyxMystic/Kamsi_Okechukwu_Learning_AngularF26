@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {Game} from './shared/models/game';
+import {GameList} from './game-list/game-list';
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, GameList],
   selector: 'app-root',
   styleUrl: './game-card.scss',
   templateUrl: './app.html',
