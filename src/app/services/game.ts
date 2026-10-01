@@ -25,4 +25,9 @@ export class GameService{
     this.game.update(
       list=> list.filter(i => i.id !==id));
   }
+  completionRate = computed(() => {
+    let total = this.gameList().length;
+    if (total === 0) return '0%';
+    return `${Math.round((this.Ownership().length / total) * 100)}%`;
+  });
 }
