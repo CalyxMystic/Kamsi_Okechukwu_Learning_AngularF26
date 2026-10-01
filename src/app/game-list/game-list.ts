@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {GameListItem} from '../game-list-item/game-list-item';
 import {Game} from '../shared/models/game';
 import {GameEvents} from '../shared/models/game-events';
-
+import {GameService} from '../services/game';
 @Component({
   imports: [
     GameListItem
@@ -21,5 +21,7 @@ export class GameList {
   onOpenGame(event: GameEvents): void {
     console.log(event.id, event.action);
   }
-
+  private gameService=inject(GameService);
+  gameList=this.gameService.gameList;
+  @Input() game!: Game;
 }
