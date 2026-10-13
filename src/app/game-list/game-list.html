@@ -1,11 +1,9 @@
 <div class="Cool">
   <h2>Video Games</h2>
-  @for (game of gameList(); track game.id){
+  @for (game of filteredGames(); track game.id){
     <app-game-list-item [game]="game" (openGame)="onOpenGame($event)"></app-game-list-item>
+    <p>Completion rate: {{completion()}}</p>
   } @empty {
-    <p>No games available</p>
-  }
-  @for (game of gameList(); track game.id){
-    <app-game-list [game]="game"/>
+    <p>No games available in this category</p>
   }
 </div>
