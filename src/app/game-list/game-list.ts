@@ -6,12 +6,11 @@ import {GameService} from '../services/game';
   imports: [GameListItem],
   selector: 'app-game-list',
   styleUrl: './game-list.css',
-  templateUrl: './game-list.html',
+  templateUrl: 'game-list.html',
 })
 export class GameList {
   private gameService=inject(GameService)
-  gameList=this.gameService.gameList
-  filteredGames=this.gameService.filteredGames
+  gameList=this.gameService.filteredGames
   completion=this.gameService.completionRate
   onOpenGame(event: GameEvents): void {
     this.gameService.removeItem(event.id);
