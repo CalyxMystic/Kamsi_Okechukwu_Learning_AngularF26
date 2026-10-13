@@ -1,6 +1,10 @@
-import {computed, effect, Service, signal} from '@angular/core';
+import {computed, effect, inject, Injectable, Service, signal} from '@angular/core';
 import {Game} from '../shared/models/game';
+import {GAME_CONFIG} from '../shared/models/config/game-config';
 @Service({})
+@Injectable({
+  providedIn: 'root'
+})
 export class GameService{
   private game=signal<Game[]>([
     {id:1, name: "Clair Obscur:Expedition 33", genre: "Role-playing", copiesSold: "Over 8 million", isOwned: false},
@@ -30,4 +34,11 @@ export class GameService{
     if (total === 0) return '0%';
     return `${Math.round((this.Ownership().length / total) * 100)}%`;
   });
+  private config=inject(GAME_CONFIG);
+  filteredGames = computed(() => {
+    let category=this.config.defaultCategory;
+    let games=this.gameList();
+    return category === 'all' ? games : games.filter(
+      game=> game.genre === category)
+  })
 }
