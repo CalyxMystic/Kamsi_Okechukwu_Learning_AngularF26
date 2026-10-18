@@ -7,7 +7,8 @@ import {GAME_CONFIG} from '../shared/models/config/game-config';
 export class GameService{
   private config=inject(GAME_CONFIG)
   //Signals
-  gameList=signal<Game[]>([])
+  private game=signal<Game[]>([])
+  gameList=this.game.asReadonly()
   //Method
   Ownership=computed(()=>
     this.gameList().filter(game=>game.isOwned)
@@ -32,10 +33,10 @@ export class GameService{
     })
   }
   increment(g: Game){
-    this.gameList.update(list=>[...list, g])
+    this.game.update(list=>[...list, g])
   }
   removeItem(id:number){
-    this.gameList.update(
+    this.game.update(
       list=> list.filter(i => i.id !==id))
   }
 }
