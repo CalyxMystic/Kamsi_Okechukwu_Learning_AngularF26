@@ -1,20 +1,14 @@
-import {computed, effect, inject, Injectable, Service, signal} from '@angular/core';
+import {computed, effect, inject, Injectable,signal} from '@angular/core';
 import {Game} from '../shared/models/game';
 import {GAME_CONFIG} from '../shared/models/config/game-config';
 
 @Injectable({providedIn: 'root'})
+
 export class GameService{
-  //Properties
-  private game=signal<Game[]>([
-    {id:1, name: "Clair Obscur:Expedition 33", genre: "Role-playing", copiesSold: "Over 8 million", isOwned: false},
-    {id:2, name:"Sword Of The Sea", genre: "Action-Adventure",copiesSold:"Over 36,00",isOwned:false},
-    {id:3, name:"Persona 3", genre:"Action-Adventure",copiesSold:"Over 3 million",isOwned:false},
-    {id:4, name:"Dead Cells", genre:"2D Metriodvania",copiesSold:"Over 10 million",isOwned:true}
-  ])
   private config=inject(GAME_CONFIG)
-  private service=inject(GameService)
   //Signals
-  gameList=this.game.asReadonly();
+  gameList=signal<Game[]>([])
+  //Method
   Ownership=computed(()=>
     this.gameList().filter(game=>game.isOwned)
   )
@@ -38,10 +32,10 @@ export class GameService{
     })
   }
   increment(g: Game){
-    this.game.update(list=>[...list, g])
+    this.gameList.update(list=>[...list, g])
   }
   removeItem(id:number){
-    this.game.update(
+    this.gameList.update(
       list=> list.filter(i => i.id !==id))
   }
 }
