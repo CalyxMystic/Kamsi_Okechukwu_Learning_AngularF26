@@ -1,23 +1,18 @@
 import {Component,inject, Input} from '@angular/core';
 import {GameListItem} from '../game-list-item/game-list-item';
-import {Game} from '../shared/models/game';
 import {GameEvents} from '../shared/models/game-events';
 import {GameService} from '../services/game';
 @Component({
-  imports: [
-    GameListItem
-  ],
+  imports: [GameListItem],
   selector: 'app-game-list',
   styleUrl: './game-list.css',
-  templateUrl: './game-list.html',
+  templateUrl: 'game-list.html',
 })
 export class GameList {
-  @Input() game!: Game;
+  private gameService=inject(GameService)
+  gameList=this.gameService.filteredGames
+  completion=this.gameService.completionRate
   onOpenGame(event: GameEvents): void {
     this.gameService.removeItem(event.id);
   }
-  private gameService=inject(GameService);
-  gameList=this.gameService.gameList;
-  completion=this.gameService.completionRate;
-
 }

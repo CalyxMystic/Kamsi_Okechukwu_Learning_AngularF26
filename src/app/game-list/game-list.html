@@ -1,11 +1,8 @@
-<div class="Cool">
+<div class="game-grid">
   <h2>Video Games</h2>
-  @for (game of gameList(); track game.id){
+  @for (game of gameList(); track game.id) {
     <app-game-list-item [game]="game" (openGame)="onOpenGame($event)"></app-game-list-item>
   } @empty {
-    <p>No games available</p>
-  }
-  @for (game of gameList(); track game.id){
-    <app-game-list [game]="game"/>
+    <p>No games available.</p>
   }
 </div>
