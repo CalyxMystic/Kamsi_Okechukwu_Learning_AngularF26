@@ -7,9 +7,10 @@ import {GAME_CONFIG} from '../shared/models/config/game-config';
 export class GameService{
   private config=inject(GAME_CONFIG)
   //Signals
-  gameList=signal<Game[]>([])
+  private game=signal<Game[]>([])
+  gameList=this.game.asReadonly()
   //Method
-  Ownership=computed(()=>
+  ownership=computed(()=>
     this.gameList().filter(game=>game.isOwned)
   )
   gameCount=computed(()=>
@@ -18,7 +19,7 @@ export class GameService{
   completionRate = computed(() => {
     let total = this.gameList().length;
     if (total === 0) return '0%';
-    return `${Math.round((this.Ownership().length / total) * 100)}%`;
+    return `${Math.round((this.ownership().length / total) * 100)}%`;
   })
   filteredGames = computed(() => {
     let category=this.config.defaultCategory;
@@ -32,10 +33,10 @@ export class GameService{
     })
   }
   increment(g: Game){
-    this.gameList.update(list=>[...list, g])
+    this.game.update(list=>[...list, g])
   }
   removeItem(id:number){
-    this.gameList.update(
+    this.game.update(
       list=> list.filter(i => i.id !==id))
   }
 }

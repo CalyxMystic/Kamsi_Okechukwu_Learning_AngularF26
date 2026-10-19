@@ -1,3 +1,11 @@
 import { Routes } from '@angular/router';
+import {GameList} from './game-list/game-list';
+import {GameDetail} from './game-detail/game-detail';
+import {PageNotFound} from './page-not-found/page-not-found';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {path: '', redirectTo: 'games', pathMatch: 'full'},
+  {path: 'games', component: GameList},
+  {path: 'games/:id', component: GameDetail},
+  {path: '**', component: PageNotFound}
+];

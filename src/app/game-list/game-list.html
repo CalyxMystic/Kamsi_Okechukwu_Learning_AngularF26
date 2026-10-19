@@ -1,7 +1,11 @@
 <div class="game-grid">
   <h2>Video Games</h2>
+  <p class="completion-stats">Current Completion Rate: {{ completion() }}</p>
   @for (game of gameList(); track game.id) {
-    <app-game-list-item [game]="game" (openGame)="onOpenGame($event)"></app-game-list-item>
+    <app-game-list-item
+      [game]="game"
+      (openGame)="onOpenGame($event)">
+    </app-game-list-item>
   } @empty {
     <p>No games available.</p>
   }
