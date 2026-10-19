@@ -1,0 +1,24 @@
+<div class="Cool">
+  @if (game(); as g) {
+    <h1>{{ g.name }}</h1>
+    <h3>Genre: {{ g.genre }}</h3>
+    <h3>Copies Sold: {{ g.copiesSold }}</h3>
+    @switch (g.genre) {
+      @case ('Role-playing') { <span class="Cool-item">Role-Playing Game</span> }
+      @case ('Action-Adventure') { <span class="Cool-item">Action-Adventure</span> }
+      @case ('2D Metroidvania') { <span class="Cool-item">2D Metroidvania</span> }
+      @default { <span class="Cool-item">Other Genre</span> }
+    }
+    @if (g.isOwned) {
+      <p class="status">Currently Owned: Available</p>
+    } @else {
+      <span class="status--missing">Ownership Unavailable</span>
+    }
+
+  } @else {
+    <p>Game details not found. The requested ID could be broken or missing.</p>
+  }
+  <p style="cursor: pointer; text-decoration: underline;" (click)="goBack()">
+    ← Back to Games List
+  </p>
+</div>

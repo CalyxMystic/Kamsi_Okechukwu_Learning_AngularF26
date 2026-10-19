@@ -1,10 +1,10 @@
 import { Injectable, signal, computed } from '@angular/core';
 import {Game} from '../../shared/models/game';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class MockGameService {
-  @Injectable({
-    providedIn: 'root'
-  })
   private game = signal<Game[]>([
     {
       id: 101,
