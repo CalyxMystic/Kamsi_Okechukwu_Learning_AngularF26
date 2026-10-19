@@ -10,7 +10,7 @@ export class GameService{
   private game=signal<Game[]>([])
   gameList=this.game.asReadonly()
   //Method
-  Ownership=computed(()=>
+  ownership=computed(()=>
     this.gameList().filter(game=>game.isOwned)
   )
   gameCount=computed(()=>
@@ -19,7 +19,7 @@ export class GameService{
   completionRate = computed(() => {
     let total = this.gameList().length;
     if (total === 0) return '0%';
-    return `${Math.round((this.Ownership().length / total) * 100)}%`;
+    return `${Math.round((this.ownership().length / total) * 100)}%`;
   })
   filteredGames = computed(() => {
     let category=this.config.defaultCategory;
