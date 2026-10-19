@@ -3,9 +3,8 @@ import {Game} from '../shared/models/game';
 import {GameEvents} from '../shared/models/game-events';
 
 @Component({
-  imports: [],
   selector: 'app-game-list-item',
-  styleUrl: './game-list-item.css',
+  styleUrl: '../game-card.scss',
   templateUrl: './game-list-item.html',
 })
 export class GameListItem {
