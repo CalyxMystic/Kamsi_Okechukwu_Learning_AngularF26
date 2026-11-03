@@ -12,6 +12,24 @@
         <p class="error">The title must be at least 2 characters long.</p>
       }
     }
+    @if (gameForm.get('title')?.touched && gameForm.get('title')?.hasError('whitespace')) {
+      <p class="error-msg">Title cannot consist of only blank whitespace spaces.</p>
+    }
+  </div>
+  @if ((gameForm.get('releaseYear')?.touched || gameForm.get('remakeYear')?.touched) && gameForm.hasError('invalidTimeline')) {
+    <div class="form-error-banner">
+      Error: Remake year cannot be set chronologically earlier than the original release year!
+    </div>
+  }
+
+  <div>
+    <label for="releaseYear">Original Release Year:</label>
+    <input id="releaseYear" type="number" formControlName="releaseYear" />
+  </div>
+
+  <div>
+    <label for="remakeYear">Remake/Remaster Year:</label>
+    <input id="remakeYear" type="number" formControlName="remakeYear" />
   </div>
 
   <div>
@@ -38,4 +56,5 @@
   <button type="submit" [disabled]="gameForm.invalid">
     {{ isEditMode() ? 'Save Changes' : 'Add Game' }}
   </button>
+  <button type="submit" [disabled]="gameForm.invalid">Submit Game</button>
 </form>
