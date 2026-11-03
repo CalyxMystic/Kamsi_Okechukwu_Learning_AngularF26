@@ -15,7 +15,7 @@ export class GameDetail {
   private router=inject(Router)
 
   game=computed(()=>
-  this.gameService.gameList().find(g=> g.id === Number(this.id())))
+    this.gameService.gameList().find(g=> g.id === Number(this.id())))
 
   goBack(): void{
     this.router.navigate(['/games'])

@@ -2,10 +2,13 @@ import { Routes } from '@angular/router';
 import {GameList} from './game-list/game-list';
 import {GameDetail} from './game-detail/game-detail';
 import {PageNotFound} from './page-not-found/page-not-found';
+import {GameForm} from './game-form/game-form';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'games', pathMatch: 'full'},
   {path: 'games', component: GameList},
+  {path: 'games/add', component: GameForm},
+  
   {path: 'games/:id', component: GameDetail},
   {path: '**', component: PageNotFound}
 ];
