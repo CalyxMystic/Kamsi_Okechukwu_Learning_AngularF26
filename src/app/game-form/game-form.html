@@ -23,21 +23,18 @@
   </div>
 
   <div>
-    <label>Platform:</label>
-    <select formControlName="platform">
-      <option value="PC">PC</option>
-      <option value="Console">Console</option>
-      <option value="Mobile">Mobile</option>
-    </select>
+    <label>Copies Sold:</label>
+    <input type="number" formControlName="copiesSold" placeholder="0" />
   </div>
 
   <div>
-    <label>Release Year:</label>
-    <input formControlName="releaseYear" placeholder="YYYY" />
-    @if (gameForm.controls.releaseYear.touched && gameForm.controls.releaseYear.hasError('pattern')) {
-      <p class="error">Please enter a valid 4-digit numeric year.</p>
-    }
+    <label>Do you own this game?</label>
+    <select formControlName="isOwned">
+      <option value="false">No</option>
+      <option value="true">Yes</option>
+    </select>
   </div>
+
   <button type="submit" [disabled]="gameForm.invalid">
     {{ isEditMode() ? 'Save Changes' : 'Add Game' }}
   </button>
