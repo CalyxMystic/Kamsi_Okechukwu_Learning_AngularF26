@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {Game} from './shared/models/game';
 import {GameList} from './game-list/game-list';
+import {editGuard} from './services/edit.guard';
 @Component({
   imports: [RouterOutlet, GameList],
   selector: 'app-root',
@@ -17,4 +18,5 @@ export class App {
     {id: 5, name: "Cyberpunk 2077:Phantom Liberty", genre: "Action RPG", copiesSold: "Over 15 million", isOwned: true},
     {id: 6, name: "Prince of Persia: The Lost Crown", genre: "Action-adventure / Metroidvania", copiesSold: "Over 1.3 million", isOwned: true},
   ]
+  protected guardService=inject(editGuard)
 }
