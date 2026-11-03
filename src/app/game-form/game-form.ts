@@ -20,7 +20,7 @@ export class GameForm {
   isEditMode = computed(() => !!this.id());
 
   gameForm=this.fb.group({
-    name:['',Validators.required,Validators.minLength(2)],
+    name:['',[Validators.required,Validators.minLength(2)]],
     genre: ['',Validators.required],
     copiesSold:[''],
     isOwned:['']
@@ -32,7 +32,7 @@ export class GameForm {
       if (currentId) {
         let existingGame = this.service.gameList().find(g => g.id === Number(currentId));
         if (existingGame) {
-          this.gameForm.patchValue(existing game);
+          this.gameForm.patchValue(existingGame as any);
         }
       }
     });
@@ -40,12 +40,12 @@ export class GameForm {
 
   onSubmit(): void {
     if (this.gameForm.invalid) return;
-    const formValues = this.gameForm.getRawValue();
+    const value = this.gameForm.getRawValue();
     if (this.isEditMode()) {
-      this.service.updateGame({ id: Number(this.id()), ...formValues });
+      this.service.updateGame({ id: Number(this.id()), ...value as any});
       this.router.navigate(['/games', this.id()]);
     } else {
-      this.service.addGame({ id: Date.now(), ...formValues });
+      this.service.addGame({ id: Date.now(), ...value as any});
       this.gameForm.reset({ isOwned: 'false' });
     }
   }
