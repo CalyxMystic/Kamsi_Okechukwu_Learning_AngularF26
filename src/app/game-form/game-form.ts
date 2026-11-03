@@ -1,5 +1,5 @@
 import {Component, computed, effect, inject, input} from '@angular/core';
-import {FormBuilder,ReactiveFormsModule, Validators} from '@angular/forms';
+import {Form, FormArray, FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {GameService} from '../services/game';
 import {Router} from '@angular/router';
 import {noWhitespaceValidator, timelineValidator} from '../customValidators';
@@ -24,9 +24,9 @@ export class GameForm {
     copiesSold: [''],
     isOwned: [''],
     releaseYear: ['', Validators.required],
-    remakeYear: ['']
+    remakeYear: [''],
+    tags: this.fb.array([])
   },{validators: timelineValidator()})
-
   constructor() {
     effect(() => {
       let currentId = this.id();
@@ -49,5 +49,16 @@ export class GameForm {
       this.service.addGame({ id: Date.now(), ...value as any});
       this.gameForm.reset({ releaseYear: 'false' });
     }
+  }
+
+  get tagsArray(): FormArray{
+    return this.gameForm.get('tags') as FormArray;
+  }
+
+  addTagRow(): void{
+    this.tagsArray.push(this.fb.control('',Validators.required))
+  }
+  removeTagRow(index:number):void{
+    this.tagsArray.removeAt(index);
   }
 }

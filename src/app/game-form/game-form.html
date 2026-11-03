@@ -53,8 +53,26 @@
     </select>
   </div>
 
-  <button type="submit" [disabled]="gameForm.invalid">
-    {{ isEditMode() ? 'Save Changes' : 'Add Game' }}
-  </button>
+  <div class="tags-section" formArrayName="tags">
+    <h3>Game Genre Tags</h3>
+
+    <p>Add some keywords that help describe this video game:</p>
+
+    @for (tagControl of tagsArray.controls; track $index) {
+      <div class="tag-row-item">
+        <input [formControlName]="$index" placeholder="e.g. Sandbox, RPG, Indie" />
+
+        <button type="button" (click)="removeTagRow($index)" class="delete-btn">
+          Remove
+        </button>
+      </div>
+    }
+
+    <button type="button" (click)="addTagRow()" class="add-btn">
+      Add New Tag
+    </button>
+  </div>
+
+  <button type="submit" [disabled]="gameForm.invalid">{{ isEditMode() ? 'Save Changes' : 'Add Game' }}</button>
   <button type="submit" [disabled]="gameForm.invalid">Submit Game</button>
 </form>
