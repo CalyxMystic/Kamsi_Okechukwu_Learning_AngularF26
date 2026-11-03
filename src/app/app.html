@@ -1,3 +1,11 @@
 <h1>Video Game API</h1>
 <app-game-list></app-game-list>
+<nav class="nav-bar">
+  <a routerLink="/games" routerLinkActive="active">Games</a>
+  <a routerLink="/add-game" routerLinkActive="active">Add Game</a>
+  <button (click)="guardService.toggleGuard()" class="toggle-btn">
+    {{ guardService.guardEnabled() ? 'Unlock Editing' : 'Lock Editing' }}
+  </button>
+</nav>
+
 <router-outlet/>
