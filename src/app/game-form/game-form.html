@@ -1,1 +1,44 @@
-<p>game-form works!</p>
+<h2>{{ isEditMode() ? 'Save Changes' : 'Add New Game' }}</h2>
+
+<form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Title:</label>
+    <input formControlName="name" placeholder="Enter game title" />
+    @if (gameForm.controls.name.touched) {
+      @if (gameForm.controls.name.hasError('required')) {
+        <p class="error">A game title is required.</p>
+      }
+      @if (gameForm.controls.name.hasError('minlength')) {
+        <p class="error">The title must be at least 2 characters long.</p>
+      }
+    }
+  </div>
+
+  <div>
+    <label>Genre:</label>
+    <input formControlName="genre" placeholder="e.g., RPG, Strategy" />
+    @if (gameForm.controls.genre.touched && gameForm.controls.genre.hasError('required')) {
+      <p class="error">Genre field cannot be blank.</p>
+    }
+  </div>
+
+  <div>
+    <label>Platform:</label>
+    <select formControlName="platform">
+      <option value="PC">PC</option>
+      <option value="Console">Console</option>
+      <option value="Mobile">Mobile</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Release Year:</label>
+    <input formControlName="releaseYear" placeholder="YYYY" />
+    @if (gameForm.controls.releaseYear.touched && gameForm.controls.releaseYear.hasError('pattern')) {
+      <p class="error">Please enter a valid 4-digit numeric year.</p>
+    }
+  </div>
+  <button type="submit" [disabled]="gameForm.invalid">
+    {{ isEditMode() ? 'Save Changes' : 'Add Game' }}
+  </button>
+</form>
