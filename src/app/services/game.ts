@@ -6,11 +6,9 @@ import {GAME_CONFIG} from '../shared/models/config/game-config';
 export class GameService {
   private config = inject(GAME_CONFIG);
 
-  // Signals
   private game = signal<Game[]>([]);
   gameList = this.game.asReadonly();
 
-  // Computed
   ownership = computed(() =>
     this.gameList().filter(game => game.isOwned)
   );
@@ -38,12 +36,10 @@ export class GameService {
     });
   }
 
-  // Add new game
   addGame(g: Game) {
     this.game.update(list => [...list, g]);
   }
 
-  // Fixed: Added correct update logic for Edit Mode mapping over the existing items
   updateGame(updatedGame: Game) {
     this.game.update(list =>
       list.map(item => item.id === updatedGame.id ? updatedGame : item)

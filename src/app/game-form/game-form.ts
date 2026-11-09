@@ -1,5 +1,5 @@
 import {Component, computed, effect, inject, input} from '@angular/core';
-import {Form, FormArray, FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {GameService} from '../services/game';
 import {Router} from '@angular/router';
 import {noWhitespaceValidator, timelineValidator} from '../customValidators';
