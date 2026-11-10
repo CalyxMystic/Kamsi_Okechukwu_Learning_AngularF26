@@ -10,6 +10,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     provideBrowserGlobalErrorListeners(),
     {provide: GameService, useClass: MockGameService},
-    {provide: GAME_CONFIG, useValue: {apiBaseUrl: 'https://rapidapi.com', defaultCategory: 'all'}}
+    {provide: GAME_CONFIG, useValue: {apiBaseUrl: 'https://rapidapi.com', defaultCategory: 'all'}
+    }
     ]
 };
