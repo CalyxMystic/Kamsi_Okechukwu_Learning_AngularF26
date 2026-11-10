@@ -60,7 +60,7 @@ The name of the API I am using is freetogame.
 
 Link: https://www.freetogame.com/api-doc
 
-Example request: 
+Example request: GET https://free-to-play-games-database.p.rapidapi.com/api/games?platform=browser&category=mmorpg&sort-by=release-date
 
 I chose HttpClient and Observable because it stores the signal so a zoneless app knows to update the view.
 
