@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {GameList} from './game-list/game-list';
 import {GameDetail} from './game-detail/game-detail';
 import {PageNotFound} from './page-not-found/page-not-found';
