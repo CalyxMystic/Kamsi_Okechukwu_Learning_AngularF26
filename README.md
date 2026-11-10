@@ -57,8 +57,11 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 # API
 
 The name of the API I am using is freetogame.
+
 Link: https://www.freetogame.com/api-doc
+
 Example request: 
+
 I chose HttpClient and Observable because it stores the signal so a zoneless app knows to update the view.
 
 ## Additional Resources
