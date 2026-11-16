@@ -1,0 +1,12 @@
+@if (isLoading()) {
+  <p>Loading games...</p>
+} @else if (error()) {
+  <p class="error">{{ error() }}</p>
+  <button (click)="load()">Try again</button>
+} @else {
+  @for (game of contents(); track game.id) {
+    <p>{{ game.name }}</p>
+  } @empty {
+    <p>No games found.</p>
+  }
+}
