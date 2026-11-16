@@ -10,9 +10,9 @@
   @for (game of gameList(); track game.id){
     <div>
       <h2>{{game.title|slice:0:10}}</h2>
-      <p>Genre: {{ game.genre | titlecase }}</p>
+      <p>Genre: {{ game.genre | titlecase|genre }}</p>
       <p>Copies Sold: {{ game.copiesSold | uppercase }}</p>
-      <p>Game Title: {{ game.title | lowercase }}</p>
+      <p>Game Title: {{ game.title | lowercase|gameDescriptionPipe:60 }}</p>
     </div>
   }
 </div>

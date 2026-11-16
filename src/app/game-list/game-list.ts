@@ -4,8 +4,10 @@ import {GameEvents} from '../shared/models/game-events';
 import {GameService} from '../services/game';
 import {Router, RouterLink} from '@angular/router';
 import {LowerCasePipe, SlicePipe, TitleCasePipe, UpperCasePipe} from '@angular/common';
+import {GenrePipe} from '../pipes/genre-pipe';
+import {GameDescriptionPipe} from '../pipes/game-description-pipe';
 @Component({
-  imports: [GameListItem, RouterLink, TitleCasePipe, UpperCasePipe, LowerCasePipe, SlicePipe],
+  imports: [GameListItem, RouterLink, TitleCasePipe, UpperCasePipe, LowerCasePipe, SlicePipe, GenrePipe, GameDescriptionPipe],
   selector: 'app-game-list',
   styleUrl: './game-list.css',
   templateUrl: 'game-list.html',
