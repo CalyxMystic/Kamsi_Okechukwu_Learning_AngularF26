@@ -8,14 +8,14 @@ export class MockGameService {
   private game = signal<Game[]>([
     {
       id: 101,
-      name: 'Mock Adventure',
+      title: 'Mock Adventure',
       genre: 'Action-Adventure',
       copiesSold: 'Mock data',
       isOwned: true
     },
     {
       id: 102,
-      name: 'Mock RPG',
+      title: 'Mock RPG',
       genre: 'Role-playing',
       copiesSold: 'Mock data',
       isOwned: false
