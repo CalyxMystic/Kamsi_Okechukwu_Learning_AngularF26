@@ -2,6 +2,6 @@ export interface Game {
   id:number
   title:string
   genre:string
-  copiesSold:string|number
+  copiesSold:string
   isOwned?:boolean
 }

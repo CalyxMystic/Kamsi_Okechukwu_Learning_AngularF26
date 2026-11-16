@@ -3,8 +3,16 @@
   <p class="completion-stats">Current Completion Rate: {{ completion() }}</p>
   @for (game of gameList(); track game.id) {
     <app-game-list-item [game]="game" (openGame)="onOpenGame($event)"></app-game-list-item>
-    <a [routerLink]="['/games',game.id]">{{game.name}}</a>
+    <a [routerLink]="['/games',game.id]">{{game.title}}</a>
   } @empty {
     <p>No games available.</p>
+  }
+  @for (game of gameList(); track game.id){
+    <div>
+      <h2>{{game.title|slice:0:10}}</h2>
+      <p>Genre: {{ game.genre | titlecase }}</p>
+      <p>Copies Sold: {{ game.copiesSold | uppercase }}</p>
+      <p>Game Title: {{ game.title | lowercase }}</p>
+    </div>
   }
 </div>
