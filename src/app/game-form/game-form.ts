@@ -1,4 +1,4 @@
-import {Component, computed, effect, inject, input} from '@angular/core';
+import {afterNextRender, Component, computed, effect, ElementRef, inject, input, viewChild} from '@angular/core';
 import {FormArray, FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {GameService} from '../services/game';
 import {Router} from '@angular/router';
@@ -15,7 +15,7 @@ export class GameForm {
   private service =inject(GameService)
   private router = inject(Router);
   id = input<string>();
-
+  firstField=viewChild<ElementRef<HTMLInputElement>>('firstField');
   isEditMode = computed(() => !!this.id());
 
   gameForm=this.fb.group({
@@ -28,6 +28,10 @@ export class GameForm {
     tags: this.fb.array([])
   },{validators: timelineValidator()})
   constructor() {
+    //This is used because  it will make the input render in the DOM before it focuses.
+    afterNextRender(()=>{
+      this.firstField()?.nativeElement.focus();
+    })
     effect(() => {
       let currentId = this.id();
       if (currentId) {
